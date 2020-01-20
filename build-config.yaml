@@ -1,0 +1,18 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: customer-service
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'customer-service:latest'
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: https://github.com/debangshud/customer-service.git
+    type: Git
+  strategy:
+    dockerStrategy:
+    type: Docker
